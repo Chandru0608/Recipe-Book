@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Detail</title>
+    <link rel="stylesheet" href="Styles.css">
+    <script src="https://kit.fontawesome.com/fbd464c484.js" crossorigin="anonymous"></script>
+    <script src="Javascript.js"></script>
+</head>
+<body>
+    <!---------------header---------------->
+    <section class="header">
+        <nav>
+            <a href="Home.html"><img src="Images/Logo.png"></a>
+            <h1><b>Nalapaka Recipe</b></h1>
+        </nav>
+        <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+        <div class="nav-links">
+            <span class="close-btn" onclick="toggleMenu()"><i class="fa-solid fa-xmark"></i></span>
+            <ul>
+                <li><div class="button"><a href="Home.html"><b>HOME</b></a></div></li>
+                <li><div class="button"><a href="Home.html"><b>ADD</b></a></div></li>
+                <li><div class="button"><a href="Contact.html"><b>CONTACT</b></a></div></li>
+            </ul>
+        </div>
+    </section>
+
+    <div class="page-image">
+        <img id="user-img" src="">
+        <div class="recipe-head">
+            <h1 id="user-name"></h1>
+            <p>Type :- <span id="user-type"></span></p>
+            <p>Style :- <span id="user-style"></span></p>
+            <p>Cooking Time :- <span id="user-time"></span></p>
+            <p>Best Served With :- <span id="user-serve"></span></p>
+            <p>Varieties :- <span id="user-variety"></span></p>
+        </div>
+    </div>
+
+    <!-- Second Section: Description -->
+    <section class="recipe-ingred">
+        <h2>Description</h2>
+        <p id="user-descript"></p>
+    </section>
+
+    <!-- Third Section: Ingredients -->
+    <section class="recipe-ingred">
+        <h2>Ingredients</h2>
+        <ol id="user-ingred"></ol>
+    </section>
+
+    <!-- Fourth Section: Procedure -->
+    <section class="recipe-ingred">
+        <h2>Procedure</h2>
+        <ol id="user-procedure"></ol>
+    </section>
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function () {
+            let currentRecipe = JSON.parse(localStorage.getItem("currentRecipe"));
+
+            if (!currentRecipe) {
+                alert("Recipe not found!");
+                window.location.href = "AI_recipe_web.html"; // Redirect to home page
+                return;
+            }
+
+            // Update recipe details dynamically
+            document.getElementById("user-img").src = currentRecipe.image;
+            document.getElementById("user-name").innerText = currentRecipe.title;
+            document.getElementById("user-type").innerText = currentRecipe.category;
+            document.getElementById("user-style").innerText = currentRecipe.style;
+            document.getElementById("user-time").innerText = currentRecipe.time;
+            document.getElementById("user-serve").innerText = currentRecipe.serve;
+            document.getElementById("user-variety").innerText = currentRecipe.variety;
+            document.getElementById("user-descript").innerText = currentRecipe.description;
+
+            // Populate ingredients
+            let ingredList = document.getElementById("user-ingred");
+            ingredList.innerHTML = ""; // Clear previous content
+            currentRecipe.ingredients.split("\n").forEach(ingred => {
+                let li = document.createElement("li");
+                li.innerText = ingred;
+                ingredList.appendChild(li);
+            });
+
+            // Populate procedure
+            let procedureList = document.getElementById("user-procedure");
+            procedureList.innerHTML = ""; // Clear previous content
+            currentRecipe.procedure.split("\n").forEach(step => {
+                let li = document.createElement("li");
+                li.innerText = step;
+                procedureList.appendChild(li);
+            });
+        });
+        console.log("Loaded Recipe in Detail Page:", recipe);
+        console.log("Captured Procedure:", procedure);
+    </script>
+    
+    <!---------------footer---------------->
+    <section class="footer-section">
+        <div class="footer">
+            <h4><b>Contact Us</b></h4>
+            <p>Nalapaka Recipes<br>1234567890</p>
+            <div class="icons">
+                <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                <a href="Contact.html"><i class="fa-brands fa-whatsapp"></i></a>
+            </div>
+            <p>&copy; 2024 Nalapaka Recipe</p>
+        </div>
+    </section>
+</body>
+</html>

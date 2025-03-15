@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe book</title>
+    <link rel="stylesheet" href="Styles.css">
+    <script src="https://kit.fontawesome.com/fbd464c484.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <section class="header">
+        <nav>
+            <a href="Home.html"><img src="Images/Logo.png"></a>
+            <h1><b>Nalapaka Recipe</b></h1>
+        </nav>
+        <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+        <div class="nav-links">
+            <span class="close-btn" onclick="toggleMenu()"><i class="fa-solid fa-xmark"></i></span>
+            <ul>
+                <li><div class="button"><a href="Home.html"><b>HOME</b></a></div></li>
+                <li><div class="button"><a href="#add-form-section-nav"><b>ADD</b></a></div></li>
+                <li><div class="button"><a href="Contact.html"><b>CONTACT</b></a></div></li>
+            </ul>
+        </div>
+    </section>
+
+    <!---------------search bar---------------->
+    <section class="search-bar">
+        <div class="search-bg">
+            <h2>Welcome to our recipe collection</h2>
+            <p>Search the best recipe to cook and enjoy the delicious taste.</p>
+            <form class="search-box">
+                <input type="text" id="search" placeholder="Search recipes..." onkeyup="searchRecipes()">
+            </form>
+    </section>
+    
+    <!---------------recipe---------------->
+    <section class="recipe">
+        <h1>Amazing recipes</h1>
+        <div id="recipeList"></div>
+    </section>
+
+    <!---------------add form---------------->
+    <section class="add-form-section" id="add-form-section-nav">
+        <h1>Add New Recipe</h1>
+        <div class="form">
+            <form id="add-form" name="add-form">
+                <h3>Category :- </h3>
+                    <select id="cat" required>
+                        <option id="select">Select</option>
+                        <option id="veg">Veg</option>
+                        <option id="non-veg">Non-Veg</option>
+                    </select><br><br><br>
+                <h3>Recipe Name :- </h3>
+                <input type="text" id="name" required placeholder="ex:- Biryani"><br><br><br>
+                <h3>Cooking Time :- </h3>
+                <input type="text" id="time" required placeholder="ex:- 20 minutes"><br><br><br>
+                <div class="form-img">
+                    <h3>Image:-</h3><img src="Images/Recipe photo default.png" id="form-image">
+                </div>
+                <div class="file-input">
+                    <label for="image">Upload</label>
+                    <input type="file" id="image" required accept="image/png, image/jpg, image/jpeg">
+                </div>
+                <br><br><br><h3>Style :- </h3>
+                <input type="text" id="style" required placeholder="ex:- South Indian or North Indian etc"><br><br><br>
+                <br><br><h3>Best served with :- </h3>
+                <input type="text" id="serve" required placeholder="ex:- Sambar, Chutney etc"><br><br><br>
+                <br><br><h3>Varietes :- </h3>
+                <input type="text" id="variety" required placeholder="ex:- Chicken Biryani, Mutton Biryani etc"><br><br><br>
+                <br><br><h3>Description :- </h3>
+                <textarea id="descript" required rows="2" cols="52" placeholder="max 80 characters i.e. only short description"></textarea><br><br>
+                <br><br><h3>Ingredients :- </h3>
+                <textarea id="ingred" required rows="5" cols="52" placeholder="ex:- chicken&#10;     onion&#10;     tomato"></textarea><br><br>
+                <br><br><h3>Procedures :- </h3>
+                <textarea id="procedure" required rows="10" cols="52" placeholder="ex:- Chop the onions.&#10;     Put chicken and fry.&#10;     Cook for 10 minues in medium flame etc."></textarea>
+            </form>
+        </div>
+        <div class="btn">
+            <input type="button" id="submit-btn" onclick="addRecipe()" value="Add Recipe">
+            <input type="button" id="delete-btn" onclick="deleteRecipe()" value="Delete Recipe">
+        </div>
+    </section>
+    <script src="Javascript.js"></script>
+
+    <!---------------footer---------------->
+    <section class="footer-section">
+        <div class="footer">
+            <h4><b>Contact Us</b></h4>
+            <p>Nalapaka Recipe<br>1234567890</p>
+            <div class="icons">
+                <a href="#" <i class="fa-brands fa-facebook"></i></a>
+                <a href="#"<i class="fa-brands fa-instagram"></i></a>
+                <a href="#"<i class="fa-brands fa-twitter"></i></a>
+                <a href="Contact.html"<i class="fa-brands fa-whatsapp"></i></a>
+            </div>
+            <p>&copy; 2024 Nalapaka Recipe</p>
+        </div>
+    </section>>
+</body>
+</html>
